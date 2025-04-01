@@ -1,0 +1,722 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+body {
+  background: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.login-container form {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-container input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.sidebar {
+  width: 100%;
+  background: #2c3e50;
+  color: white;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.logout {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sidebar li {
+  padding: 15px;
+  cursor: pointer;
+  transition: background 0.3s;
+  flex: 1 0 100px;
+  text-align: center;
+}
+
+.sidebar li:hover,
+.sidebar li.active {
+  background: #34495e;
+}
+
+.sidebar #usersBtn {
+  margin-top: auto;
+  width: 100%;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.content-section {
+  display: none;
+}
+
+.content-section.active {
+  display: block;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.section-header input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  flex: 1 0 200px;
+}
+
+.btn {
+  background: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin: 0 5px;
+}
+
+.btn:hover {
+  background: #2980b9;
+}
+
+.btn.secondary {
+  background: #7f8c8d;
+}
+
+.btn.secondary:hover {
+  background: #6d7677;
+}
+
+.btn.delete {
+  background: #e74c3c;
+}
+
+.btn.delete:hover {
+  background: #c0392b;
+}
+
+.table-container {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background: #f8f9fa;
+}
+
+td.notes {
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+td:last-child {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: flex-start;
+}
+
+.analytics-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 15px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+  flex: 0 0 160px;
+  min-width: 160px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card p {
+  font-size: 20px;
+  color: #3498db;
+  margin-top: 10px;
+}
+
+.notes-section {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.notes-section h3 {
+  margin-bottom: 0;
+}
+
+.notes-section input[type="date"] {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #f8f9fa;
+  width: 100%;
+  max-width: 200px;
+}
+
+.notes-section textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  resize: vertical;
+  background: #f8f9fa;
+  min-height: 120px;
+}
+
+.notes-section .btn {
+  align-self: flex-start;
+}
+
+#notesList {
+  margin-top: 10px;
+}
+
+#notesList.collapsible {
+  transition: max-height 0.3s ease-out;
+  overflow: hidden;
+}
+
+#notesList.collapsible.collapsed {
+  max-height: 0;
+}
+
+#notesList.collapsible:not(.collapsed) {
+  max-height: 500px; /* Adjust as needed */
+}
+
+#notesList .note-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  background: #f8f9fa;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+}
+
+.modal-content {
+  background: white;
+  margin: 0 auto;
+  padding: 25px;
+  width: 100%;
+  max-width: 700px;
+  border-radius: 10px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+  text-align: center;
+  grid-column: 1 / -1;
+}
+
+.modal-content form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px 20px;
+  align-items: start;
+}
+
+.modal-content form input,
+.modal-content form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #f8f9fa;
+  transition: border-color 0.3s;
+}
+
+.modal-content form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #f8f9fa;
+  min-height: 100px;
+  resize: vertical;
+  transition: border-color 0.3s;
+}
+
+.modal-content form input:focus,
+.modal-content form select:focus,
+.modal-content form textarea:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+.modal-content form h3 {
+  grid-column: 1 / -1;
+  margin: 15px 0 10px;
+  color: #3498db;
+  font-size: 1.2em;
+}
+
+.modal-content form .new-product-fields {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.modal-content form .btn {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 50%;
+  margin-top: 20px;
+}
+
+.modal-content form input[name="name"],
+.modal-content form input[name="title"] {
+  grid-column: 1 / 2;
+}
+
+.modal-content form input[name="email"],
+.modal-content form select[name="customer"] {
+  grid-column: 2 / 3;
+}
+
+.modal-content form input[name="phone"],
+.modal-content form input[name="dueDate"] {
+  grid-column: 1 / 2;
+}
+
+.modal-content form select[name="status"],
+.modal-content form select[name="priority"] {
+  grid-column: 2 / 3;
+}
+
+.modal-content form input[name="contact"],
+.modal-content form select[name="status"][form="crudForm"] {
+  grid-column: 1 / 2;
+}
+
+.modal-content form select[name="productId"] {
+  grid-column: 1 / 2;
+}
+
+.modal-content form select[name="vendorId"],
+.modal-content form input[name="waitTime"] {
+  grid-column: 2 / 3;
+}
+
+.modal-content form input[name="purchasePrice"],
+.modal-content form input[name="deliveryTime"] {
+  grid-column: 1 / 2;
+}
+
+.modal-content form input[name="quantity"],
+.modal-content form input[name="price"] {
+  grid-column: 2 / 3;
+}
+
+.modal-content form input[name="stock"] {
+  grid-column: 1 / 2;
+}
+
+.modal-content form textarea[name="notes"] {
+  grid-column: 1 / -1;
+  margin-top: 10px;
+}
+
+.recall-modal {
+  max-width: 800px;
+}
+
+.users-modal {
+  max-width: 500px;
+}
+
+.users-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 10px 0;
+  background: #f8f9fa;
+}
+
+.users-list-item span {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.users-list-item .status {
+  display: flex;
+  gap: 10px;
+  margin-right: 10px;
+}
+
+.users-list-item .status input[type="radio"] {
+  display: none;
+}
+
+.users-list-item .status label {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: default;
+  display: inline-block;
+}
+
+.users-list-item .status input[type="radio"] + label {
+  opacity: 0;
+}
+
+.users-list-item .status input[type="radio"]:checked + label {
+  opacity: 1;
+}
+
+.users-list-item .status input[type="radio"][value="loggedOut"] + label {
+  background: #e74c3c;
+}
+
+.users-list-item .status input[type="radio"][value="loggedIn"] + label {
+  background: #2ecc71;
+}
+
+.recall-modal h3,
+.users-modal h3 {
+  margin-top: 20px;
+  color: #3498db;
+}
+
+.recall-modal .history-item,
+.recall-modal .relationship-item,
+.users-modal .users-list-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  background: #f8f9fa;
+  position: relative;
+}
+
+.recall-modal .delete-note {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  color: #e74c3c;
+  font-size: 18px;
+}
+
+.recall-modal .delete-note:hover {
+  color: #c0392b;
+}
+
+.close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+  color: #7f8c8d;
+}
+
+.close:hover {
+  color: #e74c3c;
+}
+
+/* Responsive Design */
+
+/* Large screens (1200px and up) */
+@media (min-width: 1200px) {
+  .container {
+    flex-direction: row;
+  }
+  .sidebar {
+    width: 250px;
+    position: fixed;
+    height: 100vh;
+  }
+  .main-content {
+    margin-left: 250px;
+  }
+  .sidebar ul {
+    flex-direction: column;
+    gap: 0;
+  }
+  .sidebar li {
+    flex: none;
+  }
+  td:last-child {
+    justify-content: flex-start;
+  }
+  .btn {
+    padding: 10px 20px;
+    margin: 0 5px;
+  }
+}
+
+/* Medium-large screens (769px - 1199px) */
+@media (min-width: 769px) and (max-width: 1199px) {
+  .container {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    padding: 15px;
+    position: static;
+  }
+  .main-content {
+    margin-left: 0;
+    padding: 15px;
+  }
+  .sidebar ul {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .sidebar li {
+    flex: 1 0 120px;
+    padding: 12px;
+  }
+  .section-header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .section-header input {
+    flex: 1 0 150px;
+  }
+  .analytics-grid {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .card {
+    flex: 1 0 30%;
+    max-width: 32%;
+  }
+  td:last-child {
+    justify-content: flex-start;
+    gap: 8px;
+  }
+  .btn {
+    padding: 8px 16px;
+    margin: 0 4px;
+  }
+  .modal-content {
+    max-width: 600px;
+    padding: 20px;
+  }
+  .modal-content form {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 15px;
+  }
+  .modal-content form .new-product-fields {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .notes-section input[type="date"] {
+    max-width: 180px;
+  }
+}
+
+/* Medium screens (768px and below) */
+@media (max-width: 768px) {
+  .sidebar {
+    padding: 15px;
+  }
+  .sidebar ul {
+    gap: 5px;
+  }
+  .sidebar li {
+    padding: 10px;
+    flex: 1 0 45%;
+  }
+  .main-content {
+    padding: 15px;
+  }
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .section-header input {
+    width: 100%;
+  }
+  .section-header div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+  }
+  #recallAnalyticsBtn,
+  #exportBtn,
+  #importBtn {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+  }
+  .analytics-grid {
+    flex-direction: column;
+  }
+  .card {
+    flex: 1 0 100%;
+    max-width: 100%;
+  }
+  td:last-child {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  .btn {
+    padding: 8px 15px;
+    margin: 2px 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  .modal-content {
+    padding: 20px;
+    max-width: 90%;
+  }
+  .modal-content form {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .modal-content form .new-product-fields {
+    grid-template-columns: 1fr;
+  }
+  .modal-content form .btn {
+    width: 100%;
+  }
+  .notes-section input[type="date"] {
+    max-width: 100%;
+  }
+  .users-list-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .users-list-item .status {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .users-list-item .btn.delete {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+/* Small screens (480px and below) */
+@media (max-width: 480px) {
+  .login-container form {
+    padding: 20px;
+  }
+  .sidebar li {
+    flex: 1 0 100%;
+  }
+  .card {
+    padding: 10px;
+  }
+  .notes-section {
+    padding: 15px;
+  }
+  .notes-section textarea {
+    min-height: 100px;
+  }
+  td:last-child {
+    gap: 3px;
+  }
+  .btn {
+    padding: 8px 15px;
+    margin: 2px 0;
+    width: 100%;
+    max-width: 100%;
+  }
+}
