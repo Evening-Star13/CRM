@@ -8,10 +8,24 @@
   </head>
   <body>
     <div class="login-container" id="loginContainer">
-      <form id="loginForm">
+      <form id="loginForm" aria-label="Login Form">
         <h2>Login</h2>
-        <input type="text" id="username" placeholder="Username" required />
-        <input type="password" id="password" placeholder="Password" required />
+        <label for="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          placeholder="Username"
+          required
+          aria-required="true"
+        />
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Password"
+          required
+          aria-required="true"
+        />
         <button type="submit" class="btn">Login</button>
         <button type="button" class="btn secondary" id="newUserBtn">
           New User
@@ -19,24 +33,42 @@
       </form>
     </div>
 
-    <div class="container" id="mainContainer" style="display: none">
+    <div class="container" id="mainContainer">
       <aside class="sidebar">
         <h2>CRM</h2>
-        <button class="btn logout" id="logoutBtn">Logout</button>
+        <button class="btn logout" id="logoutBtn" aria-label="Logout">
+          Logout
+        </button>
         <nav>
-          <ul>
-            <li class="active" data-section="customers">Customers</li>
-            <li data-section="vendors">Vendors</li>
-            <li data-section="products">Products</li>
-            <li data-section="tasks">Tasks</li>
-            <li data-section="analytics">Analytics</li>
+          <ul role="navigation">
+            <li
+              class="active"
+              data-section="customers"
+              aria-label="Customers Section"
+            >
+              Customers
+            </li>
+            <li data-section="vendors" aria-label="Vendors Section">Vendors</li>
+            <li data-section="products" aria-label="Products Section">
+              Products
+            </li>
+            <li data-section="tasks" aria-label="Tasks Section">Tasks</li>
+            <li data-section="analytics" aria-label="Analytics Section">
+              Analytics
+            </li>
           </ul>
         </nav>
-        <button class="btn" id="usersBtn">Users</button>
+        <button class="btn" id="usersBtn" aria-label="Manage Users">
+          Users
+        </button>
       </aside>
 
       <main class="main-content">
-        <section id="customers" class="content-section active">
+        <section
+          id="customers"
+          class="content-section active"
+          aria-label="Customers"
+        >
           <div class="section-header">
             <h1>Customers</h1>
             <div>
@@ -44,14 +76,20 @@
                 type="text"
                 id="customerSearch"
                 placeholder="Search customers..."
+                aria-label="Search Customers"
               />
-              <button class="btn" data-action="add" data-type="customer">
+              <button
+                class="btn"
+                data-action="add"
+                data-type="customer"
+                aria-label="Add Customer"
+              >
                 Add Customer
               </button>
             </div>
           </div>
           <div class="table-container">
-            <table>
+            <table aria-label="Customer List">
               <thead>
                 <tr>
                   <th>Name</th>
@@ -67,7 +105,7 @@
           </div>
         </section>
 
-        <section id="vendors" class="content-section">
+        <section id="vendors" class="content-section" aria-label="Vendors">
           <div class="section-header">
             <h1>Vendors</h1>
             <div>
@@ -75,14 +113,20 @@
                 type="text"
                 id="vendorSearch"
                 placeholder="Search vendors..."
+                aria-label="Search Vendors"
               />
-              <button class="btn" data-action="add" data-type="vendor">
+              <button
+                class="btn"
+                data-action="add"
+                data-type="vendor"
+                aria-label="Add Vendor"
+              >
                 Add Vendor
               </button>
             </div>
           </div>
           <div class="table-container">
-            <table>
+            <table aria-label="Vendor List">
               <thead>
                 <tr>
                   <th>Name</th>
@@ -98,7 +142,7 @@
           </div>
         </section>
 
-        <section id="products" class="content-section">
+        <section id="products" class="content-section" aria-label="Products">
           <div class="section-header">
             <h1>Products</h1>
             <div>
@@ -106,19 +150,25 @@
                 type="text"
                 id="productSearch"
                 placeholder="Search products..."
+                aria-label="Search Products"
               />
-              <button class="btn" data-action="add" data-type="product">
+              <button
+                class="btn"
+                data-action="add"
+                data-type="product"
+                aria-label="Add Product"
+              >
                 Add Product
               </button>
             </div>
           </div>
           <div class="table-container">
-            <table>
+            <table aria-label="Product List">
               <thead>
                 <tr>
                   <th>Name</th>
-                  <th>Price</th>
-                  <th>Stock</th>
+                  <th>Vendor Prices</th>
+                  <th>Total Stock</th>
                   <th>Notes</th>
                   <th>Actions</th>
                 </tr>
@@ -128,15 +178,20 @@
           </div>
         </section>
 
-        <section id="tasks" class="content-section">
+        <section id="tasks" class="content-section" aria-label="Tasks">
           <div class="section-header">
             <h1>Tasks</h1>
-            <button class="btn" data-action="add" data-type="task">
+            <button
+              class="btn"
+              data-action="add"
+              data-type="task"
+              aria-label="Add Task"
+            >
               Add Task
             </button>
           </div>
           <div class="table-container">
-            <table>
+            <table aria-label="Task List">
               <thead>
                 <tr>
                   <th>Title</th>
@@ -153,49 +208,85 @@
           </div>
         </section>
 
-        <section id="analytics" class="content-section">
+        <section id="analytics" class="content-section" aria-label="Analytics">
           <div class="section-header">
             <h1>Analytics</h1>
             <div>
-              <button class="btn" id="recallAnalyticsBtn">
+              <button
+                class="btn"
+                id="recallAnalyticsBtn"
+                aria-label="Recall Analytics"
+              >
                 Recall Analytics
               </button>
-              <button class="btn" id="exportBtn">Export Data</button>
+              <button class="btn" id="exportBtn" aria-label="Export Data">
+                Export Data
+              </button>
               <input
                 type="file"
                 id="importFile"
                 accept=".json"
-                style="display: none"
+                aria-label="Import Data File"
               />
-              <button class="btn" id="importBtn">Import Data</button>
+              <button class="btn" id="importBtn" aria-label="Import Data">
+                Import Data
+              </button>
             </div>
           </div>
           <div class="analytics-grid">
-            <div class="card" data-recall="totalCustomers">
+            <div
+              class="card"
+              data-recall="totalCustomers"
+              aria-label="Total Customers"
+            >
               <h3>Total Customers</h3>
               <p id="totalCustomers">0</p>
             </div>
-            <div class="card" data-recall="activeCustomers">
+            <div
+              class="card"
+              data-recall="activeCustomers"
+              aria-label="Active Customers"
+            >
               <h3>Active Customers</h3>
               <p id="activeCustomers">0</p>
             </div>
-            <div class="card" data-recall="inactiveCustomers">
+            <div
+              class="card"
+              data-recall="inactiveCustomers"
+              aria-label="Inactive Customers"
+            >
               <h3>Inactive Customers</h3>
               <p id="inactiveCustomers">0</p>
             </div>
-            <div class="card" data-recall="totalVendors">
+            <div
+              class="card"
+              data-recall="totalVendors"
+              aria-label="Total Vendors"
+            >
               <h3>Total Vendors</h3>
               <p id="totalVendors">0</p>
             </div>
-            <div class="card" data-recall="totalProducts">
+            <div
+              class="card"
+              data-recall="totalProducts"
+              aria-label="Total Products"
+            >
               <h3>Total Products</h3>
               <p id="totalProducts">0</p>
             </div>
-            <div class="card" data-recall="lowStock">
+            <div
+              class="card"
+              data-recall="lowStock"
+              aria-label="Low Stock Products"
+            >
               <h3>Low Stock Products</h3>
               <p id="lowStock">0</p>
             </div>
-            <div class="card" data-recall="highPriorityTasks">
+            <div
+              class="card"
+              data-recall="highPriorityTasks"
+              aria-label="High Priority Tasks"
+            >
               <h3>High Priority Tasks</h3>
               <p id="highPriorityTasks">0</p>
             </div>
@@ -205,46 +296,71 @@
             <input
               type="date"
               id="notesDateFilter"
-              placeholder="Filter by date"
+              aria-label="Filter Notes by Date"
             />
             <textarea
               id="analyticsNotes"
               rows="6"
               placeholder="Enter notes here..."
+              aria-label="Analytics Notes"
             ></textarea>
-            <button class="btn" id="saveAnalyticsNote">Save Note</button>
-            <button class="btn secondary" id="toggleNotesBtn">
+            <button class="btn" id="saveAnalyticsNote" aria-label="Save Note">
+              Save Note
+            </button>
+            <button
+              class="btn secondary"
+              id="toggleNotesBtn"
+              aria-label="Toggle Notes Visibility"
+            >
               Show Notes
             </button>
-            <div id="notesList" class="collapsible collapsed"></div>
+            <div
+              id="notesList"
+              class="collapsible collapsed"
+              aria-label="Notes List"
+            ></div>
           </div>
         </section>
       </main>
 
-      <div class="modal" id="modal">
+      <div class="modal" id="modal" aria-label="CRUD Modal">
         <div class="modal-content">
-          <span class="close">×</span>
-          <form id="crudForm">
+          <span class="close" id="crudModalClose" aria-label="Close Modal"
+            >×</span
+          >
+          <form id="crudForm" aria-label="CRUD Form">
             <h2 id="modalTitle"></h2>
             <div id="formFields"></div>
-            <button type="submit" class="btn">Save</button>
+            <button type="submit" class="btn" aria-label="Save Item">
+              Save
+            </button>
           </form>
         </div>
       </div>
 
-      <div class="modal" id="recallModal">
+      <div class="modal" id="recallModal" aria-label="Recall Modal">
         <div class="modal-content recall-modal">
-          <span class="close">×</span>
+          <span
+            class="close"
+            id="recallModalClose"
+            aria-label="Close Recall Modal"
+            >×</span
+          >
           <h2 id="recallTitle"></h2>
           <div id="recallContent"></div>
         </div>
       </div>
 
-      <div class="modal" id="usersModal">
+      <div class="modal" id="usersModal" aria-label="Users Modal">
         <div class="modal-content users-modal">
-          <span class="close">×</span>
+          <span
+            class="close"
+            id="usersModalClose"
+            aria-label="Close Users Modal"
+            >×</span
+          >
           <h2>Registered Users</h2>
-          <div id="usersList"></div>
+          <div id="usersList" aria-label="Users List"></div>
         </div>
       </div>
     </div>
